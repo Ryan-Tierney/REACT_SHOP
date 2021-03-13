@@ -1,20 +1,25 @@
 import React from 'react'
 import './App.css';
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Cart from './components/Cart'
+import { Provider } from 'react-redux'
+import  store  from './store.js'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <nav>
-          <h2>Sorry We're Late Shop</h2>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">ShoppingCart</a></li>
-          </ul>
-        </nav>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <BrowserRouter>
+        <Navbar />
+        <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/cart" component={Cart} />
+        </Switch>
+        </BrowserRouter>
+      </div>
+    </Provider>
   );
 }
 
