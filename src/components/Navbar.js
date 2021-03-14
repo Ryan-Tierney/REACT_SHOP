@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getNumbers } from '../actions/getAction'
+import { Link } from 'react-router-dom'
 
 
 
@@ -16,12 +17,12 @@ function Navbar(props) {
           <nav>
             <h2>Sorry We're Late</h2>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href='#'>Products</a></li>
-              <li className="cart"><a href="#">
+              <li><Link to="/Products">Home</Link></li>
+              <li><Link to="/About">About</Link></li>
+              <li><Link to='/'>Products</Link></li>
+              <li className="cart"><Link to="/Cart">
               <ion-icon name="cart"></ion-icon>Cart<span>{props.cartProps.cartNumbers}</span>
-              </a></li>
+              </Link></li>
             </ul>
           </nav>
         </header>
