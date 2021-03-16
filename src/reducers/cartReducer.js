@@ -47,9 +47,18 @@ export default (state = initalState, action) => {
     switch(action.type) {
         case ADD_TO_CART: 
             let addQuantity = {...state.products[action.payload]}
+            addQuantity.numbers += 1; 
+            addQuantity.inCart = true;
             console.log(addQuantity)
+
             return {
-                cartNumbers: state.cartNumbers + 1 
+                ...state, 
+                cartNumbers: state.cartNumbers + 1,
+                cartCost: state.cartCost + state.products[action.payload].price,
+                products: {
+                    ...state.products, 
+                    [action.payload]: addQuantity
+                }
             }
         case GET_NUMBERS_CART: 
             return { 
